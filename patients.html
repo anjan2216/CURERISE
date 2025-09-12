@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Cases - CureRise</title>
+    <meta name="description" content="Browse verified patient cases needing financial assistance for medical treatment. Make transparent donations directly to hospitals.">
+    
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/patients.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <div id="navigation-placeholder"></div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="page-title">Patient Cases</h1>
+                <p class="page-description">
+                    Help patients in need by making transparent donations directly to verified hospitals
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search by patient name, condition, or hospital..." class="search-input">
+                    <button class="search-btn">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="filter-options">
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="">All Categories</option>
+                        <option value="cardiac">Cardiac Surgery</option>
+                        <option value="cancer">Cancer Treatment</option>
+                        <option value="emergency">Emergency Care</option>
+                        <option value="pediatric">Pediatric Care</option>
+                        <option value="orthopedic">Orthopedic Surgery</option>
+                        <option value="neurological">Neurological Treatment</option>
+                    </select>
+                    
+                    <select id="urgencyFilter" class="filter-select">
+                        <option value="">All Urgency Levels</option>
+                        <option value="critical">Critical</option>
+                        <option value="urgent">Urgent</option>
+                        <option value="moderate">Moderate</option>
+                    </select>
+                    
+                    <select id="locationFilter" class="filter-select">
+                        <option value="">All Locations</option>
+                        <option value="mumbai">Mumbai</option>
+                        <option value="delhi">Delhi</option>
+                        <option value="bangalore">Bangalore</option>
+                        <option value="chennai">Chennai</option>
+                        <option value="kolkata">Kolkata</option>
+                        <option value="hyderabad">Hyderabad</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-number" id="totalCases">156</span>
+                        <span class="stat-label">Active Cases</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-number">₹45L</span>
+                        <span class="stat-label">Funds Needed</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-number">1,247</span>
+                        <span class="stat-label">Patients Helped</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-number">89</span>
+                        <span class="stat-label">Partner Hospitals</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Cases Grid -->
+    <section class="cases-section">
+        <div class="container">
+            <div class="cases-header">
+                <h2 class="cases-title">Current Patient Cases</h2>
+                <div class="sort-options">
+                    <select id="sortSelect" class="sort-select">
+                        <option value="newest">Newest First</option>
+                        <option value="urgent">Most Urgent</option>
+                        <option value="amount-low">Amount: Low to High</option>
+                        <option value="amount-high">Amount: High to Low</option>
+                        <option value="progress">Most Progress</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="cases-grid" id="casesGrid">
+                <!-- Patient cases will be loaded here dynamically -->
+            </div>
+            
+            <div class="load-more-container">
+                <button class="btn btn-outline" id="loadMoreBtn">Load More Cases</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/patients.js"></script>
+    <script>
+        // Load navigation and footer
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load navigation
+            fetch('components/navigation.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('navigation-placeholder').innerHTML = html;
+                });
+
+            // Load footer
+            fetch('components/footer.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('footer-placeholder').innerHTML = html;
+                });
+        });
+    </script>
+</body>
+</html>

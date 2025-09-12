@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CureRise Dashboard - Your Impact Hub</title>
+    <meta name="description" content="CureRise Dashboard - Manage your donations, start campaigns, support food banks, and track your impact on healthcare accessibility.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="brand-section">
+                    <div class="brand-logo">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="14" fill="currentColor"/>
+                            <path d="M16 24l-1.5-1.36C9.04 18.27 6 15.4 6 11.5 6 8.42 8.42 6 11.5 6c1.74 0 3.41.81 4.5 2.09C17.09 6.81 18.76 6 20.5 6 23.58 6 26 8.42 26 11.5c0 3.9-3.04 6.77-8.5 11.14L16 24z" fill="white"/>
+                        </svg>
+                        <span class="brand-text">CureRise</span>
+                    </div>
+                    <span class="welcome-text">Welcome back, <span id="userName">User</span>!</span>
+                </div>
+
+                <div class="header-actions">
+                    <button class="notification-btn" id="notificationBtn">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+                        </svg>
+                        <span class="notification-badge">3</span>
+                    </button>
+
+                    <div class="user-menu">
+                        <button class="user-avatar" id="userMenuBtn">
+                            <img src="assets/images/default-avatar.svg" alt="User Avatar" class="avatar-img">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </button>
+
+                        <div class="user-dropdown" id="userDropdown">
+                            <a href="#" class="dropdown-item" id="accountInfoBtn">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                </svg>
+                                Account Info
+                            </a>
+                            <a href="#" class="dropdown-item" id="settingsBtn">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.82,11.69,4.82,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+                                </svg>
+                                Settings
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="admin/login.html" class="dropdown-item admin-access" id="adminAccessBtn">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                                </svg>
+                                Admin Access
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item logout-item" id="logoutBtn">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.59L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+                                </svg>
+                                Log Out
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <main class="dashboard-main">
+        <div class="container">
+
+
+            <!-- Dashboard Actions -->
+            <section class="dashboard-actions">
+                <h2 class="section-title">What would you like to do today?</h2>
+
+                <div class="actions-grid">
+                    <!-- Account Info -->
+                    <div class="action-card" id="accountInfoCard">
+                        <div class="action-icon">
+                            <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            </svg>
+                        </div>
+                        <div class="action-content">
+                            <h3 class="action-title">Account Information</h3>
+                            <p class="action-description">View and update your profile, donation history, and preferences</p>
+                            <button class="action-btn">Manage Account</button>
+                        </div>
+                    </div>
+
+                    <!-- Start Campaign -->
+                    <div class="action-card" id="startCampaignCard">
+                        <div class="action-icon">
+                            <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                            </svg>
+                        </div>
+                        <div class="action-content">
+                            <h3 class="action-title">Start a Donation Campaign</h3>
+                            <p class="action-description">Create a fundraising campaign for a patient or medical cause</p>
+                            <button class="action-btn">Create Campaign</button>
+                        </div>
+                    </div>
+
+                    <!-- Donate -->
+                    <div class="action-card" id="donateCard">
+                        <div class="action-icon">
+                            <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </div>
+                        <div class="action-content">
+                            <h3 class="action-title">Donate to Patients</h3>
+                            <p class="action-description">Browse urgent patient cases and make direct donations to hospitals</p>
+                            <button class="action-btn">Browse Cases</button>
+                        </div>
+                    </div>
+
+                    <!-- Food Bank -->
+                    <div class="action-card" id="foodBankCard">
+                        <div class="action-icon">
+                            <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="action-content">
+                            <h3 class="action-title">Food Bank Support</h3>
+                            <p class="action-description">Provide nutritional support to patients and families during recovery</p>
+                            <button class="action-btn">Support Nutrition</button>
+                        </div>
+                    </div>
+
+                    <!-- Education Charity -->
+                    <div class="action-card" id="educationCard">
+                        <div class="action-icon">
+                            <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                            </svg>
+                        </div>
+                        <div class="action-content">
+                            <h3 class="action-title">Education Charity</h3>
+                            <p class="action-description">Support educational initiatives for underprivileged children and families</p>
+                            <button class="action-btn">Support Education</button>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Fund -->
+                    <div class="action-card" id="emergencyCard">
+                        <div class="action-icon">
+                            <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                            </svg>
+                        </div>
+                        <div class="action-content">
+                            <h3 class="action-title">Emergency Fund</h3>
+                            <p class="action-description">Contribute to our emergency fund for critical medical situations</p>
+                            <button class="action-btn">Emergency Support</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
