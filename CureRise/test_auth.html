@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Authentication - CureRise</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { color: green; }
+        .error { color: red; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+        input { padding: 8px; margin: 5px; width: 200px; }
+    </style>
+</head>
+<body>
+    <h1>CureRise Authentication Test</h1>
+    
+    <div class="test-section">
+        <h3>1. Backend Health Check</h3>
+        <button onclick="testHealth()">Test Backend Connection</button>
+        <div id="healthResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>2. Test Registration</h3>
+        <input type="text" id="regName" placeholder="Full Name" value="Test User">
+        <input type="email" id="regEmail" placeholder="Email" value="test@example.com">
+        <input type="password" id="regPassword" placeholder="Password" value="test123">
+        <input type="tel" id="regPhone" placeholder="Phone" value="+919876543210">
+        <br>
+        <button onclick="testRegistration()">Test Registration</button>
+        <div id="regResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>3. Test Login</h3>
+        <input type="email" id="loginEmail" placeholder="Email" value="test@example.com">
+        <input type="password" id="loginPassword" placeholder="Password" value="test123">
+        <br>
+        <button onclick="testLogin()">Test Login</button>
+        <div id="loginResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>4. Test Demo Login</h3>
+        <button onclick="testDemoLogin()">Test Demo Login</button>
+        <div id="demoResult"></div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:5000/api';
+
+        async function testHealth() {
+            const resultDiv = document.getElementById('healthResult');
+            try {
+                const response = await fetch(`${API_BASE_URL}/health`);
+                const data = await response.json();
+                resultDiv.innerHTML = `<span class="success">✓ Backend is running: ${data.message}</span>`;
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">✗ Backend connection failed: ${error.message}</span>`;
+            }
+        }
+
+        async function testRegistration() {
+            const resultDiv = document.getElementById('regResult');
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const phone = document.getElementById('regPhone').value;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name, email, password, phone })
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `<span class="success">✓ Registration successful: ${data.message}</span>`;
+                    // Store token for testing
+                    localStorage.setItem('access_token', data.access_token);
+                    localStorage.setItem('currentUser', JSON.stringify(data.user));
+                } else {
+                    resultDiv.innerHTML = `<span class="error">✗ Registration failed: ${data.error}</span>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">✗ Registration error: ${error.message}</span>`;
+            }
+        }
+
+        async function testLogin() {
+            const resultDiv = document.getElementById('loginResult');
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `<span class="success">✓ Login successful: ${data.message}</span>`;
+                    // Store token for testing
+                    localStorage.setItem('access_token', data.access_token);
+                    localStorage.setItem('currentUser', JSON.stringify(data.user));
+                } else {
+                    resultDiv.innerHTML = `<span class="error">✗ Login failed: ${data.error}</span>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">✗ Login error: ${error.message}</span>`;
+            }
+        }
+
+        async function testDemoLogin() {
+            const resultDiv = document.getElementById('demoResult');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email: 'demo@curerise.com', password: 'demo123' })
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `<span class="success">✓ Demo login successful: ${data.message}</span>`;
+                    // Store token for testing
+                    localStorage.setItem('access_token', data.access_token);
+                    localStorage.setItem('currentUser', JSON.stringify(data.user));
+                } else {
+                    resultDiv.innerHTML = `<span class="error">✗ Demo login failed: ${data.error}</span>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">✗ Demo login error: ${error.message}</span>`;
+            }
+        }
+
+        // Auto-test health on page load
+        window.onload = function() {
+            testHealth();
+        };
+    </script>
+</body>
+</html>

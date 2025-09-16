@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - CureRise</title>
+    <meta name="description" content="Your donation has been successfully processed. Thank you for helping patients through CureRise.">
+    
+    <link rel="stylesheet" href="assets/css/global.css">
+    <style>
+        .success-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--success-50), var(--primary-50));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-xl);
+        }
+        
+        .success-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-2xl);
+            padding: var(--spacing-3xl);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--success-500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-xl);
+            animation: successPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes successPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .success-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .success-message {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-2xl);
+            line-height: 1.6;
+        }
+        
+        .donation-summary {
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-2xl);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .summary-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .summary-details {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .summary-label {
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+        
+        .summary-value {
+            color: var(--gray-900);
+            font-weight: 600;
+        }
+        
+        .summary-value.amount {
+            color: var(--success-600);
+            font-size: 1.25rem;
+        }
+        
+        .transaction-id {
+            background: var(--primary-50);
+            border: 1px solid var(--primary-200);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .transaction-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .transaction-value {
+            font-family: monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-700);
+        }
+        
+        .success-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .receipt-info {
+            background: var(--warning-50);
+            border: 1px solid var(--warning-200);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .receipt-text {
+            color: var(--warning-800);
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        
+        @media (max-width: 768px) {
+            .success-actions {
+                flex-direction: column;
+            }
+            
+            .success-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-card">
+            <!-- Success Icon -->
+            <div class="success-icon">
+                <svg width="40" height="40" fill="white" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+            </div>
+            
+            <!-- Success Message -->
+            <h1 class="success-title">Payment Successful!</h1>
+            <p class="success-message">
+                Thank you for your generous donation! Your contribution will directly help patients receive the medical care they need.
+            </p>
+            
+            <!-- Donation Summary -->
+            <div class="donation-summary">
+                <h2 class="summary-title">Donation Summary</h2>
+                <div class="summary-details">
+                    <div class="summary-item">
+                        <span class="summary-label">Donated to:</span>
+                        <span class="summary-value">Rajesh Kumar - Cardiac Surgery</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Hospital:</span>
+                        <span class="summary-value">Apollo Hospital, Mumbai</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Amount:</span>
+                        <span class="summary-value amount">₹5,000</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Payment Method:</span>
+                        <span class="summary-value">UPI</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Date & Time:</span>
+                        <span class="summary-value" id="paymentDateTime"></span>
+                    </div>
+                </div>
+                
+                <!-- Transaction ID -->
+                <div class="transaction-id">
+                    <div class="transaction-label">Transaction ID</div>
+                    <div class="transaction-value" id="transactionId">CR2024011512345678</div>
+                </div>
+            </div>
+            
+            <!-- Receipt Information -->
+            <div class="receipt-info">
+                <p class="receipt-text">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                    </svg>
+                    A detailed receipt has been sent to your registered email address.
+                </p>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="success-actions">
+                <button class="btn btn-primary" id="downloadReceipt">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                    </svg>
+                    Download Receipt
+                </button>
+                <a href="patients.html" class="btn btn-outline">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                    Help Another Patient
+                </a>
+                <a href="index.html" class="btn btn-secondary">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                    </svg>
+                    Back to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/global.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current date and time
+            const now = new Date();
+            const dateTimeString = now.toLocaleString('en-IN', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            });
+            document.getElementById('paymentDateTime').textContent = dateTimeString;
+            
+            // Generate random transaction ID
+            const transactionId = 'CR' + now.getFullYear() + 
+                                 (now.getMonth() + 1).toString().padStart(2, '0') + 
+                                 now.getDate().toString().padStart(2, '0') + 
+                                 Math.random().toString().substr(2, 8);
+            document.getElementById('transactionId').textContent = transactionId;
+            
+            // Download receipt functionality
+            document.getElementById('downloadReceipt').addEventListener('click', function() {
+                // Simulate receipt download
+                CureRise.toast.show('Receipt download started!', 'success');
+                
+                // In a real application, this would generate and download a PDF receipt
+                setTimeout(() => {
+                    const receiptData = {
+                        transactionId: transactionId,
+                        amount: '₹5,000',
+                        recipient: 'Rajesh Kumar - Cardiac Surgery',
+                        hospital: 'Apollo Hospital, Mumbai',
+                        paymentMethod: 'UPI',
+                        dateTime: dateTimeString,
+                        donorEmail: 'donor@example.com'
+                    };
+                    
+                    console.log('Receipt data:', receiptData);
+                    CureRise.toast.show('Receipt saved to Downloads folder', 'info');
+                }, 1000);
+            });
+            
+            // Auto-redirect after 30 seconds (optional)
+            setTimeout(() => {
+                const redirectNotice = document.createElement('div');
+                redirectNotice.style.cssText = `
+                    position: fixed;
+                    bottom: 20px;
+                    right: 20px;
+                    background: var(--primary-600);
+                    color: white;
+                    padding: 12px 20px;
+                    border-radius: 8px;
+                    box-shadow: var(--shadow-lg);
+                    z-index: 1000;
+                    font-size: 0.875rem;
+                `;
+                redirectNotice.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span>Redirecting to dashboard in 10 seconds...</span>
+                        <button onclick="this.parentElement.parentElement.remove()" style="background: none; border: none; color: white; cursor: pointer; font-size: 1.2rem;">×</button>
+                    </div>
+                `;
+                document.body.appendChild(redirectNotice);
+                
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 10000);
+            }, 20000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Login Redirection - CureRise</title>
+    <link rel="stylesheet" href="assets/css/global.css">
+    <style>
+        .test-container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .test-title {
+            color: var(--primary-600);
+            margin-bottom: 1rem;
+        }
+        
+        .test-description {
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .test-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .status-message {
+            margin-top: 2rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        
+        .status-success {
+            background: var(--success-100);
+            color: var(--success-700);
+            border: 1px solid var(--success-200);
+        }
+        
+        .status-info {
+            background: var(--primary-100);
+            color: var(--primary-700);
+            border: 1px solid var(--primary-200);
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 class="test-title">🧪 Login Redirection Test</h1>
+        <p class="test-description">
+            This page helps you test the login and registration redirection functionality. 
+            After successful login or registration, you should be redirected back to the homepage.
+        </p>
+        
+        <div class="test-buttons">
+            <a href="auth/login.html" class="btn btn-primary">Test Login Page</a>
+            <a href="auth/register.html" class="btn btn-secondary">Test Registration Page</a>
+            <a href="index.html" class="btn btn-outline">Go to Homepage</a>
+        </div>
+        
+        <div class="status-message status-info">
+            <strong>How to test:</strong><br>
+            1. Click "Test Login Page" or "Test Registration Page"<br>
+            2. Fill out the form and submit<br>
+            3. You should see a success message and be redirected to the homepage<br>
+            4. Check that the navigation works correctly from auth pages
+        </div>
+        
+        <div class="status-message status-success" style="display: none;" id="redirectSuccess">
+            ✅ <strong>Redirection Successful!</strong><br>
+            You were successfully redirected from the login/registration page.
+        </div>
+    </div>
+
+    <script>
+        // Check if we were redirected from auth pages
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const fromAuth = urlParams.get('from');
+            
+            if (fromAuth === 'login' || fromAuth === 'register') {
+                document.getElementById('redirectSuccess').style.display = 'block';
+                
+                // Remove the parameter from URL after showing message
+                setTimeout(() => {
+                    const newUrl = window.location.pathname;
+                    window.history.replaceState({}, document.title, newUrl);
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
