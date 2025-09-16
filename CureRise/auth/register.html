@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CureRise - Create Account</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom styles to match the React component's look and feel */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+
+        /* Custom animation for the loading spinner */
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+
+        /* Custom styles for the toast notification */
+        .toast {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 50;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .toast-success {
+            background-color: #10B981; /* Emerald-500 */
+            color: white;
+        }
+        .toast-destructive {
+            background-color: #EF4444; /* Red-500 */
+            color: white;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <!-- Back to Home Link -->
+    <div class="absolute top-4 left-4">
+        <a href="../index.html" class="flex items-center gap-2 text-gray-600 hover:text-purple-600 transition-colors">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+            </svg>
+            Back to Home
+        </a>
+    </div>
+
+    <div class="w-full max-w-4xl bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+        <div class="text-center mb-8">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="16" cy="16" r="14" fill="#8B5CF6"/>
+                    <path d="M16 24l-1.5-1.36C9.04 18.27 6 15.4 6 11.5 6 8.42 8.42 6 11.5 6c1.74 0 3.41.81 4.5 2.09C17.09 6.81 18.76 6 20.5 6 23.58 6 26 8.42 26 11.5c0 3.9-3.04 6.77-8.5 11.14L16 24z" fill="white"/>
+                </svg>
+                <span class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">CureRise</span>
+            </div>
+            <h1 class="text-3xl font-bold text-gray-800">Create an Account</h1>
+            <p class="text-gray-500 mt-2">Join CureRise and make a difference today.</p>
+        </div>
+
+        <form id="registerForm" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="space-y-2">
+                    <label for="fullName" class="text-sm font-medium text-gray-700">Full Name</label>
+                    <div class="relative">
+                        <div class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <input id="fullName" type="text" placeholder="Enter your full name" class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" required>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label for="email" class="text-sm font-medium text-gray-700">Email Address</label>
+                    <div class="relative">
+                        <div class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        </div>
+                        <input id="email" type="email" placeholder="Enter your email" class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="space-y-2">
+                    <label for="phone" class="text-sm font-medium text-gray-700">Phone Number</label>
+                    <div class="relative">
+                        <div class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <input id="phone" type="tel" placeholder="+91 XXXXX XXXXX" class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" required>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label for="state" class="text-sm font-medium text-gray-700">State</label>
+                    <div class="relative">
+                        <div class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 z-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <select id="state" class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-md appearance-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" required>
+                            <option value="" disabled selected>Select your state</option>
+                            </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="space-y-2">
+                    <label for="password" class="text-sm font-medium text-gray-700">Password</label>
+                    <div class="relative">
+                        <div class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        </div>
+                        <input id="password" type="password" placeholder="Create password" class="w-full pl-10 pr-10 py-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" required>
+                        <button type="button" class="absolute right-0 top-0 h-full px-3 text-gray-400 hover:text-gray-600" id="togglePassword">
+                            <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                            <svg id="eyeOffIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 hidden"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label for="confirmPassword" class="text-sm font-medium text-gray-700">Confirm Password</label>
+                    <div class="relative">
+                        <div class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        </div>
+                        <input id="confirmPassword" type="password" placeholder="Confirm password" class="w-full pl-10 pr-10 py-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" required>
+                        <button type="button" class="absolute right-0 top-0 h-full px-3 text-gray-400 hover:text-gray-600" id="toggleConfirmPassword">
+                            <svg id="confirmEyeIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                            <svg id="confirmEyeOffIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 hidden"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-start space-x-2">
+                <input type="checkbox" id="terms" class="mt-1 rounded border-gray-300 text-blue-600 focus:ring-blue-500" required />
+                <label for="terms" class="text-sm text-gray-500">
+                    I agree to CureRise's 
+                    <a href="#" class="text-blue-600 hover:underline font-medium">Terms of Service</a> 
+                    and 
+                    <a href="#" class="text-blue-600 hover:underline font-medium">Privacy Policy</a>
+                </label>
+            </div>
+
+            <button type="submit" id="submitButton" class="w-full h-12 flex items-center justify-center gap-2 text-white font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:shadow-lg rounded-md transition-all duration-300 disabled:opacity-75 disabled:cursor-not-allowed">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                <span>Join CureRise</span>
+            </button>
+
+            <div class="text-center text-sm">
+                <span class="text-gray-500">Already have an account? </span>
+                <a href="./login.html" class="font-semibold text-blue-600 hover:underline">Sign In</a>
+            </div>
+        </form>
+    </div>
+
+    <div id="toastContainer"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- STATE AND DATA ---
+            const indianStates = [
+                'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh',
+                'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand',
+                'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur',
+                'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab',
+                'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura',
+                'Uttar Pradesh', 'Uttarakhand', 'West Bengal'
+            ];
+
+            // --- ELEMENT REFERENCES ---
+            const form = document.getElementById('registerForm');
+            const stateSelect = document.getElementById('state');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const togglePasswordBtn = document.getElementById('togglePassword');
+            const toggleConfirmPasswordBtn = document.getElementById('toggleConfirmPassword');
+            const submitButton = document.getElementById('submitButton');
+
+            // Debug: Check if all elements are found
+            console.log('Form elements found:', {
+                form: !!form,
+                stateSelect: !!stateSelect,
+                passwordInput: !!passwordInput,
+                confirmPasswordInput: !!confirmPasswordInput,
+                submitButton: !!submitButton
+            });
+
+            if (!form) {
+                console.error('Register form not found!');
+                return;
+            }
+
+            // --- INITIALIZATION ---
+
+            // Populate the state dropdown
+            indianStates.forEach(state => {
+                const option = document.createElement('option');
+                option.value = state;
+                option.textContent = state;
+                stateSelect.appendChild(option);
+            });
+
+            // --- HELPER FUNCTIONS ---
+
+            /**
+             * Toggles the visibility of a password field and its corresponding icons.
+             * @param {HTMLInputElement} input - The password input element.
+             * @param {SVGSVGElement} eyeIcon - The 'visible' eye icon.
+             * @param {SVGSVGElement} eyeOffIcon - The 'hidden' eye icon.
+             */
+            function togglePasswordVisibility(input, eyeIcon, eyeOffIcon) {
+                const isPassword = input.type === 'password';
+                input.type = isPassword ? 'text' : 'password';
+                eyeIcon.classList.toggle('hidden', isPassword);
+                eyeOffIcon.classList.toggle('hidden', !isPassword);
+            }
+
+            /**
+             * Displays a toast notification.
+             * @param {string} title - The main message for the toast.
+             * @param {string} description - The secondary message.
+             * @param {'success' | 'destructive'} variant - The style of the toast.
+             */
+            function showToast(title, description, variant = 'success') {
+                const container = document.getElementById('toastContainer');
+                const toast = document.createElement('div');
+                toast.className = `toast toast-${variant}`;
+                
+                // Create a simple structure for the toast content
+                const content = `
+                    <div>
+                        <p class="font-semibold">${title}</p>
+                        ${description ? `<p class="text-sm">${description}</p>` : ''}
+                    </div>
+                `;
+                toast.innerHTML = content;
+
+                container.appendChild(toast);
+
+                // Trigger the animation
+                setTimeout(() => {
+                    toast.classList.add('show');
+                }, 100);
+
+                // Hide and remove the toast after a delay
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    toast.addEventListener('transitionend', () => toast.remove());
+                }, 4000);
+            }
+            
+            /**
+             * Sets the loading state for the submit button.
+             * @param {boolean} isLoading - Whether the form is currently submitting.
+             */
+            function setLoading(isLoading) {
+                submitButton.disabled = isLoading;
+                if (isLoading) {
+                    submitButton.innerHTML = `
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                            Creating Account...
+                        </div>
+                    `;
+                } else {
+                    submitButton.innerHTML = `
+                        <div class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                            <span>Join CureRise</span>
+                        </div>
+                    `;
+                }
+            }
+
+
+            // --- EVENT LISTENERS ---
+
+            // Toggle password visibility
+            togglePasswordBtn.addEventListener('click', () => {
+                togglePasswordVisibility(
+                    passwordInput,
+                    document.getElementById('eyeIcon'),
+                    document.getElementById('eyeOffIcon')
+                );
+            });
+
+            // Toggle confirm password visibility
+            toggleConfirmPasswordBtn.addEventListener('click', () => {
+                togglePasswordVisibility(
+                    confirmPasswordInput,
+                    document.getElementById('confirmEyeIcon'),
+                    document.getElementById('confirmEyeOffIcon')
+                );
+            });
+
+            // API Configuration
+            const API_BASE_URL = 'http://localhost:5000/api';
+
+            // API Helper Functions
+            class CureRiseAPI {
+                static async request(endpoint, options = {}) {
+                    const url = `${API_BASE_URL}${endpoint}`;
+                    const defaultOptions = {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    };
+                    
+                    const config = { ...defaultOptions, ...options };
+                    
+                    try {
+                        const response = await fetch(url, config);
+                        
+                        if (!response.ok) {
+                            const errorData = await response.json();
+                            throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+                        }
+                        
+                        return await response.json();
+                    } catch (error) {
+                        console.error('API request failed:', error);
+                        throw error;
+                    }
+                }
+
+                static async register(userData) {
+                    return await this.request('/auth/register', {
+                        method: 'POST',
+                        body: JSON.stringify(userData),
+                    });
+                }
+            }
+
+            // Handle form submission
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault(); // Prevent the default form submission
+                console.log('Registration form submitted');
+
+                // Basic validation
+                if (passwordInput.value.length < 8) {
+                    console.log('Validation failed: password too short');
+                    showToast(
+                        "Password Too Short",
+                        "Password must be at least 8 characters long.",
+                        "destructive"
+                    );
+                    return;
+                }
+
+                if (passwordInput.value !== confirmPasswordInput.value) {
+                    console.log('Validation failed: passwords do not match');
+                    showToast(
+                        "Password Mismatch",
+                        "Please ensure both passwords match.",
+                        "destructive"
+                    );
+                    return;
+                }
+
+                console.log('Validation passed, proceeding with registration');
+
+                setLoading(true);
+
+                try {
+                    // Get registration data
+                    const fullName = document.getElementById('fullName').value;
+                    const email = document.getElementById('email').value;
+                    const phone = document.getElementById('phone').value;
+
+                    // Prepare API data
+                    const registrationData = {
+                        name: fullName,
+                        email: email,
+                        password: passwordInput.value,
+                        phone: phone
+                    };
+
+                    // Call the API
+                    const response = await CureRiseAPI.register(registrationData);
+                    
+                    // Store user data and token
+                    const userData = {
+                        ...response.user,
+                        access_token: response.access_token,
+                        loginTime: new Date().toISOString(),
+                        isLoggedIn: true,
+                        isNewUser: true
+                    };
+
+                    // Store in localStorage
+                    localStorage.setItem('currentUser', JSON.stringify(userData));
+                    localStorage.setItem('access_token', response.access_token);
+                    console.log('User data stored:', userData);
+
+                    showToast(
+                        "Account Created Successfully!",
+                        "Welcome to CureRise. Redirecting to homepage...",
+                        "success"
+                    );
+
+                    console.log('Registration successful, redirecting...');
+
+                    // Redirect to homepage after showing success message
+                    setTimeout(() => {
+                        console.log('Attempting redirect to ../index.html');
+                        try {
+                            window.location.href = '../index.html';
+                        } catch (error) {
+                            console.error('Redirect failed:', error);
+                            // Fallback redirect method
+                            window.location.replace('../index.html');
+                        }
+                    }, 1500);
+
+                } catch (error) {
+                    console.error('Registration failed:', error);
+                    
+                    // Extract meaningful error message
+                    let errorMessage = error.message || "Please try again later.";
+                    
+                    // Handle common error cases
+                    if (error.message.includes('already exists')) {
+                        errorMessage = "An account with this email already exists. Please try logging in instead.";
+                    } else if (error.message.includes('Invalid email')) {
+                        errorMessage = "Please enter a valid email address.";
+                    } else if (error.message.includes('Missing required fields')) {
+                        errorMessage = "Please fill in all required fields.";
+                    }
+                    
+                    showToast(
+                        "Registration Failed",
+                        errorMessage,
+                        "destructive"
+                    );
+                } finally {
+                    setLoading(false);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

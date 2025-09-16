@@ -1,0 +1,397 @@
+/* Food Bank Page Styles */
+
+/* Hero Section */
+.food-hero {
+  background: linear-gradient(135deg, var(--success-600), var(--primary-600));
+  color: white;
+  padding: 120px 0 80px;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+}
+
+.food-hero .hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+}
+
+.food-hero .hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: var(--spacing-lg);
+}
+
+.food-hero .hero-description {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-xl);
+}
+
+.food-hero .hero-actions {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.food-hero .btn-outline {
+  border-color: white;
+  color: white;
+}
+
+.food-hero .btn-outline:hover {
+  background: white;
+  color: var(--success-600);
+}
+
+.food-hero .hero-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Impact Stats */
+.impact-stats {
+  background: white;
+  padding: var(--spacing-2xl) 0;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.impact-stats .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-xl);
+}
+
+.impact-stats .stat-item {
+  text-align: center;
+  padding: var(--spacing-lg);
+}
+
+.impact-stats .stat-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--success-100);
+  color: var(--success-600);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-md);
+}
+
+.impact-stats .stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  display: block;
+  line-height: 1;
+}
+
+.impact-stats .stat-label {
+  font-size: 1rem;
+  color: var(--gray-600);
+  font-weight: 500;
+  margin-top: var(--spacing-sm);
+}
+
+/* How It Helps Section */
+.how-it-helps {
+  padding: var(--spacing-2xl) 0;
+  background: var(--gray-50);
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
+}
+
+.benefit-card {
+  background: white;
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+}
+
+.benefit-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--success-100);
+  color: var(--success-600);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-lg);
+}
+
+.benefit-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: var(--spacing-sm);
+}
+
+.benefit-description {
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+/* Donation Options */
+.donation-options {
+  padding: var(--spacing-2xl) 0;
+  background: white;
+}
+
+.donation-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
+}
+
+.donation-card {
+  background: white;
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.donation-card:hover {
+  border-color: var(--primary-500);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+}
+
+.donation-card.featured {
+  border-color: var(--primary-500);
+  background: linear-gradient(135deg, var(--primary-50), var(--success-50));
+}
+
+.featured-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-600);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.card-header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: var(--spacing-md);
+}
+
+.card-price {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-600);
+}
+
+.card-price span {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--gray-600);
+}
+
+.card-features {
+  list-style: none;
+  margin-bottom: var(--spacing-xl);
+}
+
+.card-features li {
+  padding: var(--spacing-sm) 0;
+  color: var(--gray-600);
+  position: relative;
+  padding-left: var(--spacing-lg);
+}
+
+.card-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--success-600);
+  font-weight: 600;
+}
+
+.card-btn {
+  width: 100%;
+}
+
+/* Success Stories */
+.success-stories {
+  padding: var(--spacing-2xl) 0;
+  background: var(--gray-50);
+}
+
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
+}
+
+.story-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease;
+}
+
+.story-card:hover {
+  transform: translateY(-5px);
+}
+
+.story-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.story-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.story-content {
+  padding: var(--spacing-xl);
+}
+
+.story-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: var(--spacing-md);
+}
+
+.story-text {
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-lg);
+  font-style: italic;
+}
+
+.story-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.story-author {
+  font-weight: 500;
+  color: var(--gray-700);
+}
+
+.story-location {
+  color: var(--gray-500);
+}
+
+/* CTA Section */
+.cta-section {
+  padding: var(--spacing-2xl) 0;
+  background: linear-gradient(135deg, var(--success-600), var(--primary-600));
+  color: white;
+  text-align: center;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+}
+
+.cta-description {
+  font-size: 1.125rem;
+  margin-bottom: var(--spacing-xl);
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+}
+
+.cta-section .btn-outline {
+  border-color: white;
+  color: white;
+}
+
+.cta-section .btn-outline:hover {
+  background: white;
+  color: var(--success-600);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .food-hero .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .food-hero .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .food-hero .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .impact-stats .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .donation-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .stories-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-title {
+    font-size: 2rem;
+  }
+  
+  .cta-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .impact-stats .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

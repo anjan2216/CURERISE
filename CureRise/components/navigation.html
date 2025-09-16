@@ -1,0 +1,315 @@
+<!-- CureRise Navigation Component -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-content">
+      <!-- Logo -->
+      <div class="nav-brand">
+        <a href="index.html" class="brand-link">
+          <div class="brand-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="16" r="14" fill="currentColor"/>
+              <path d="M16 24l-1.5-1.36C9.04 18.27 6 15.4 6 11.5 6 8.42 8.42 6 11.5 6c1.74 0 3.41.81 4.5 2.09C17.09 6.81 18.76 6 20.5 6 23.58 6 26 8.42 26 11.5c0 3.9-3.04 6.77-8.5 11.14L16 24z" fill="white"/>
+            </svg>
+          </div>
+          <span class="brand-text">CureRise</span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="nav-links desktop-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="patients.html" class="nav-link">Patient Cases</a>
+        <a href="food-bank.html" class="nav-link">Food Bank</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+
+      <!-- Auth Buttons -->
+      <div class="nav-auth desktop-nav">
+        <a href="auth/login.html" class="btn btn-outline btn-sm">Sign In</a>
+        <a href="auth/register.html" class="btn btn-primary btn-sm">Join CureRise</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+      <div class="mobile-nav-content">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="patients.html" class="mobile-nav-link">Patient Cases</a>
+        <a href="food-bank.html" class="mobile-nav-link">Food Bank</a>
+        <a href="about.html" class="mobile-nav-link">About Us</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+        <div class="mobile-nav-auth">
+          <a href="auth/login.html" class="btn btn-outline">Sign In</a>
+          <a href="auth/register.html" class="btn btn-primary">Join CureRise</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+/* Navigation Styles */
+.navbar {
+  background: white;
+  box-shadow: var(--shadow-sm);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) 0;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  text-decoration: none;
+  color: var(--gray-800);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.brand-icon {
+  color: var(--primary-600);
+}
+
+.brand-text {
+  background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+}
+
+.nav-link {
+  color: var(--gray-600);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary-600);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-600);
+  transition: width 0.2s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-auth {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/* Mobile Menu */
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+}
+
+.hamburger-line {
+  width: 24px;
+  height: 2px;
+  background: var(--gray-600);
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.mobile-nav {
+  display: none;
+  background: white;
+  border-top: 1px solid var(--gray-200);
+}
+
+.mobile-nav.active {
+  display: block;
+  animation: slideDown 0.3s ease;
+}
+
+.mobile-nav-content {
+  padding: var(--spacing-lg) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.mobile-nav-link {
+  color: var(--gray-600);
+  font-weight: 500;
+  text-decoration: none;
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--gray-100);
+  transition: color 0.2s ease;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+  color: var(--primary-600);
+}
+
+.mobile-nav-auth {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--gray-200);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+  
+  .mobile-menu-btn {
+    display: flex;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-nav {
+    display: none !important;
+  }
+}
+</style>
+
+<script>
+// Navigation JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+  const navbar = document.getElementById('navbar');
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+
+  // Determine if we're in a subdirectory (like auth/)
+  const currentPath = window.location.pathname;
+  const isInSubdirectory = currentPath.includes('/auth/') || currentPath.includes('\\auth\\');
+  const pathPrefix = isInSubdirectory ? '../' : '';
+
+  // Update all navigation links with correct paths
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+
+    // Skip external links, anchors, and already relative links
+    if (href.startsWith('http') || href.startsWith('#') || href.startsWith('../')) {
+      return;
+    }
+
+    // Update internal navigation links
+    if (href.includes('.html') && !href.includes('auth/')) {
+      link.setAttribute('href', pathPrefix + href);
+    }
+
+    // Update auth links when not in auth directory
+    if (href.includes('auth/') && !isInSubdirectory) {
+      // Keep as is for main pages
+    } else if (href.includes('auth/') && isInSubdirectory) {
+      // Remove auth/ prefix when already in auth directory
+      link.setAttribute('href', href.replace('auth/', ''));
+    }
+  });
+
+  // Handle scroll effect
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // Handle mobile menu toggle
+  mobileMenuBtn.addEventListener('click', function() {
+    mobileMenuBtn.classList.toggle('active');
+    mobileNav.classList.toggle('active');
+  });
+
+  // Close mobile menu when clicking on a link
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', function() {
+      mobileMenuBtn.classList.remove('active');
+      mobileNav.classList.remove('active');
+    });
+  });
+
+  // Set active link based on current page
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  navLinks.forEach(link => {
+    const linkHref = link.getAttribute('href');
+    const linkPage = linkHref.split('/').pop();
+    if (linkPage === currentPage) {
+      link.classList.add('active');
+    }
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function(event) {
+    if (!navbar.contains(event.target)) {
+      mobileMenuBtn.classList.remove('active');
+      mobileNav.classList.remove('active');
+    }
+  });
+});
+</script>
